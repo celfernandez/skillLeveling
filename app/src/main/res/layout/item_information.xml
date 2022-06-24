@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ItemResults">
-    <!---TODO: ver posicion de las cosas y tamanios-->
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/toolbarResultsActivity"
@@ -15,87 +15,173 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-    <TextView
-        android:id="@+id/productNameTV"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textSize="16sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbarResultsActivity"
-        tools:text="@string/product_name"/>
-        <!---TODO: corregir font-->
-
-    <TextView
-        android:id="@+id/moreInformationTV"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        tools:text="@string/information"
-        app:layout_constraintTop_toBottomOf="@+id/productNameTV"
-        />
-    
-    <ImageView
-        android:layout_width="343dp"
-        android:layout_height="275dp"
-        android:id="@+id/productImageIV"
-        app:layout_constraintTop_toBottomOf="@+id/moreInformationTV"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:contentDescription="@string/description" />
-
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/productPriceTV"
-        tools:text="$$$"
-        android:textSize="36sp"
-        app:layout_constraintTop_toBottomOf="@id/productImageIV"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        />
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/favoriteCL"
-        android:layout_height="wrap_content"
-        android:layout_width="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/productPriceTV"
-        app:layout_constraintStart_toStartOf="@+id/productPriceTV"
-        app:layout_constraintEnd_toEndOf="@+id/productPriceTV">
 
         <ImageView
-            android:layout_width="16dp"
-            android:layout_height="15dp"
-            android:id="@+id/favoriteIV"
-            android:src="@drawable/favorite_icon"
-            app:layout_constraintTop_toTopOf="@id/favoriteCL"
-            android:contentDescription="@string/description"
-            />
-
-        <TextView
-            android:id="@+id/addFavoriteTV"
+            android:id="@+id/locationIV"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/add_favorite"
-            android:textSize="14sp"
-            app:layout_constraintStart_toEndOf="@+id/favoriteIV"
-            app:layout_constraintTop_toTopOf="@+id/favoriteIV"
-            app:layout_constraintBottom_toBottomOf="@+id/favoriteIV"
-            />
+            android:paddingStart="16dp"
+            android:paddingBottom="12dp"
+            android:src="@drawable/location_icon"
+            app:layout_constraintBottom_toBottomOf="@id/toolbarResultsActivity" />
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingStart="8dp"
+            android:textColor="@color/black"
+            android:text="@string/shipping"
+            app:layout_constraintStart_toEndOf="@id/locationIV"
+            app:layout_constraintTop_toTopOf="@id/locationIV" />
+
+        <ImageView
+            android:id="@+id/showFavoriteIV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingTop="8dp"
+            android:src="@drawable/show_favorites_icon"
+            app:layout_constraintEnd_toStartOf="@id/searchIV" />
+
+        <ImageView
+            android:id="@+id/searchIV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingStart="16dp"
+            android:paddingTop="8dp"
+            android:src="@drawable/search_icon"
+            app:layout_constraintEnd_toStartOf="@+id/cartIV" />
+
+        <ImageView
+            android:id="@+id/cartIV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingStart="16dp"
+            android:paddingTop="8dp"
+            android:paddingEnd="16dp"
+            android:src="@drawable/shopping_cart_icon"
+            app:layout_constraintEnd_toEndOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <TextView
+    <ScrollView
+        android:id="@+id/itemSV"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/productDescriptionTV"
-        tools:text="description of the product"
-        android:textSize="36sp"
-        app:layout_constraintTop_toBottomOf="@+id/favoriteCL"
+        app:layout_constraintTop_toBottomOf="@+id/toolbarResultsActivity"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        />
+        android:fillViewport="false"
+        >
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/itemContainerCL"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            >
+            <TextView
+                android:id="@+id/productNameTV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:textColor="@color/descriptionText"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/itemContainerCL"
+                tools:text="@string/product_name" />
+
+            <TextView
+                android:id="@+id/moreInformationTV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:textColor="@color/textSubtitle"
+                app:layout_constraintStart_toStartOf="@id/productNameTV"
+                app:layout_constraintTop_toBottomOf="@+id/productNameTV"
+                tools:text="@string/information" />
+
+            <ImageView
+                android:id="@+id/productImageIV"
+                android:layout_width="343dp"
+                android:layout_height="275dp"
+                android:contentDescription="@string/description"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/moreInformationTV" />
+
+            <TextView
+                android:id="@+id/productPriceTV"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                android:textColor="@color/black"
+                android:textSize="36sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/productImageIV"
+                tools:text="$$$" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/favoriteCL"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="16dp"
+                app:layout_constraintEnd_toEndOf="@+id/productPriceTV"
+                app:layout_constraintStart_toStartOf="@+id/productPriceTV"
+                app:layout_constraintTop_toBottomOf="@id/productPriceTV">
+
+                <ImageView
+                    android:id="@+id/favoriteIV"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:contentDescription="@string/description"
+                    android:src="@drawable/not_favorite_icon"
+                    app:layout_constraintTop_toTopOf="@id/favoriteCL" />
+
+                <TextView
+                    android:id="@+id/addFavoriteTV"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:text="@string/add_favorite"
+                    android:textColor="@color/text"
+                    android:textSize="14sp"
+                    app:layout_constraintBottom_toBottomOf="@+id/favoriteIV"
+                    app:layout_constraintStart_toEndOf="@+id/favoriteIV"
+                    app:layout_constraintTop_toTopOf="@+id/favoriteIV" />
+
+                <Button
+                    android:id="@+id/favoriteListBT"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="48dp"
+                    android:background="@drawable/rounded_button"
+                    android:text="@string/show_favorites"
+                    android:textAllCaps="false"
+                    app:layout_constraintBottom_toBottomOf="@+id/addFavoriteTV"
+                    app:layout_constraintStart_toEndOf="@+id/addFavoriteTV"
+                    app:layout_constraintTop_toTopOf="@+id/addFavoriteTV" />
+
+                <TextView
+                    android:id="@+id/itemDescriptionTV"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="12sp"
+                    android:layout_marginTop="32dp"
+                    android:justificationMode="inter_word"
+                    android:textColor="@color/descriptionText"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/favoriteIV"
+                    tools:text="@string/description" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </ScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
+
+

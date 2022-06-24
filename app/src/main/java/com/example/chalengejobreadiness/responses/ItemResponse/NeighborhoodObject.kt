@@ -1,4 +1,4 @@
-package com.example.chalengejobreadiness.responses.ResponseItem
+package com.example.chalengejobreadiness.responses.ItemResponse
 
 import com.google.gson.annotations.SerializedName
 

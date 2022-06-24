@@ -1,3 +1,12 @@
 <resources>
     <string name="app_name">chalengeJobReadiness</string>
+    <string name="search">search for a product</string>
+    <string name="product_name">product name</string>
+    <string name="add_favorite">add favorite</string>
+    <string name="description">Description of the item</string>
+    <string name="information">more information about the product</string>
+    <string name="location">location</string>
+    <string name="more_information">more information</string>
+    <string name="show_favorites">Show favorites</string>
+    <string name="shipping">send to UserId</string>
 </resources>

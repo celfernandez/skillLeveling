@@ -1,4 +1,7 @@
 package com.example.chalengejobreadiness.responses.ItemResponse
 
-class ResponseItem {
-}
+import com.google.gson.annotations.SerializedName
+
+data class ResponseItem(
+    @SerializedName("body") val body : Body
+)
